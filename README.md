@@ -1,4 +1,4 @@
-# demo01
+# Fried Egg
 
 ## Project setup
 ```
