@@ -5,6 +5,11 @@ import ElementUI from 'element-ui';
 // import '@/styles/index.less'
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios';
+// 引入echarts
+import * as echarts from 'echarts'
+import 'echarts-wordcloud';
+Vue.prototype.$echarts = echarts;
+
 Vue.prototype.$axios = axios;    //全局注册，使用方法为:this.$axios
 
 Vue.use(ElementUI);

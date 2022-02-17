@@ -1,14 +1,23 @@
 import axios from 'axios';
 
-export function getInfo(){
+export function regist(params){
     return axios({
-        url:'server-eggs/test01',
-        method:'get',
+        url:'/regist',
+        method:'post',
+        data:params
     })
 }
-export function login(){
+export function login(params){
     return axios({
-        url:'server-eggs/login',
-        method:'post'
+        url:'/login',
+        method:'post',
+        data:params
+    })
+}
+export function display(params){
+    return axios({
+        url:'/display',
+        method:'post',
+        data:params
     })
 }

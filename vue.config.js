@@ -4,18 +4,18 @@ module.exports = {
         config
         .plugin('html')
         .tap(args => {
-            args[0].title= 'Fried Egg'
+            args[0].title= '爬虫数据可视化系统'
             return args
         })
     },
     devServer: {
         proxy: {
-          '/server-eggs': {
-            target: 'http://10.2.4.69:3000/',
+          '/': {
+            target: 'http://101.35.53.113:5000',
             changeOrigin: true,
-            pathRewrite: {
-              '^/server-eggs': ''
-            }
+            // pathRewrite: {
+            //   '^/server-eggs': ''
+            // }
           }
         }
     }

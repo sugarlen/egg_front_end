@@ -1,21 +1,17 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
- @font-face {
-  font-family: 'password';
-  src: url('./assets/fonts/PasswordEntry.eot');
-  src: local('☺'),
-    url('./assets/fonts/PasswordEntry.eot?#iefix') format('embedded-opentype'), 
-    url('./assets/fonts/PasswordEntry.ttf');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-/* *{
-   margin: 0;
-} */
-body,html{
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
