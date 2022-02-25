@@ -57,7 +57,6 @@ import * as info from "../../api/info";
 export default {
   data() {
     return {
-      activeIndex: 1,
       formData: {
         url: "http://you.163.com/item/detail?id=4028691",
       },
@@ -105,7 +104,6 @@ export default {
         .display(params)
         .then((res) => {
           if (res.data.code == 200) {
-            console.log(res);
             this.chartsData = res.data.data;
             let positiveChartData = res.data.data.positive;
             let negativeChartData = res.data.data.negative;
@@ -130,7 +128,6 @@ export default {
               this.pieChartData.push({name:el,value:pieChartData[el]})
             });
             
-            console.log(keys,this.pieChartData)
             this.drawChart();
           } else {
             this.$message.error("拉取错误！");

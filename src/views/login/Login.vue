@@ -189,34 +189,32 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      // this.$router.push({ path: "/home" });
-      // console.log(formName);
-      this.$refs[formName].validate((valid) => {
-        let params = {
-          username: this.formData.user,
-          password: this.formData.pass,
-        };
-        if (valid) {
-          info
-            .login(params)
-            .then((res) => {
-              if (res.data.code == 200) {
-                console.log(res);
-                this.data = res.data.data;
-                localStorage.setItem('username',this.formData.user)
-                this.$router.push({ path: "/home" });
-              } else {
-                this.$message.error("用户名或密码错误！");
-              }
-            })
-            .catch((err) => {
-              this.$Message.error(err + "!");
-            });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+      this.$router.push({ path: "/positive" });
+      console.log(formName);
+      // this.$refs[formName].validate((valid) => {
+      //   let params = {
+      //     username: this.formData.user,
+      //     password: this.formData.pass,
+      //   };
+      //   if (valid) {
+      //     info
+      //       .login(params)
+      //       .then((res) => {
+      //         if (res.data.code == 200) {
+      //           this.data = res.data.data;
+      //           localStorage.setItem('username',this.formData.user)
+      //           this.$router.push({ path: "/home" });
+      //         } else {
+      //           this.$message.error("用户名或密码错误！");
+      //         }
+      //       })
+      //       .catch((err) => {
+      //         this.$Message.error(err + "!");
+      //       });
+      //   } else {
+      //     return false;
+      //   }
+      // });
     },
     toRegist(){
       this.isLogin = false; 
@@ -236,7 +234,6 @@ export default {
             .regist(params)
             .then((res) => {
               if (res.data.code == 200 && res.data.msg == 'success') {
-                console.log(res);
                 this.data = res.data.data;
                 this.isRegist = false;
                 setTimeout(()=>{
@@ -250,7 +247,6 @@ export default {
               this.$Message.error(err + "!");
             });
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -297,7 +293,7 @@ export default {
 } */
 .login {
   height: 100%;
-  background: url("../../assets/images/bg1.jpg") no-repeat left 20%;
+  background: url("../../assets/images/background.jpg") no-repeat left 20%;
   background-size: cover;
 }
 .login-title {
