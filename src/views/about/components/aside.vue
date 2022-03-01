@@ -51,7 +51,8 @@ export default {
         '/positive':'el-icon-document-checked',
         '/negative':'el-icon-document-remove',
         '/wordCloud':'el-icon-cloudy',
-        '/netease':'el-icon-connection'
+        '/netease':'el-icon-connection',
+        '/commentsType':'el-icon-edit-outline'
       }
     };
   },

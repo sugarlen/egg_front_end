@@ -189,32 +189,32 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$router.push({ path: "/positive" });
-      console.log(formName);
-      // this.$refs[formName].validate((valid) => {
-      //   let params = {
-      //     username: this.formData.user,
-      //     password: this.formData.pass,
-      //   };
-      //   if (valid) {
-      //     info
-      //       .login(params)
-      //       .then((res) => {
-      //         if (res.data.code == 200) {
-      //           this.data = res.data.data;
-      //           localStorage.setItem('username',this.formData.user)
-      //           this.$router.push({ path: "/home" });
-      //         } else {
-      //           this.$message.error("用户名或密码错误！");
-      //         }
-      //       })
-      //       .catch((err) => {
-      //         this.$Message.error(err + "!");
-      //       });
-      //   } else {
-      //     return false;
-      //   }
-      // });
+      // this.$router.push({ path: "/positive" });
+      // console.log(formName);
+      this.$refs[formName].validate((valid) => {
+        let params = {
+          username: this.formData.user,
+          password: this.formData.pass,
+        };
+        if (valid) {
+          info
+            .login(params)
+            .then((res) => {
+              if (res.data.code == 200) {
+                this.data = res.data.data;
+                localStorage.setItem('username',this.formData.user)
+                this.$router.push({ path: "/positive" });
+              } else {
+                this.$message.error("用户名或密码错误！");
+              }
+            })
+            .catch((err) => {
+              this.$Message.error(err + "!");
+            });
+        } else {
+          return false;
+        }
+      });
     },
     toRegist(){
       this.isLogin = false; 
@@ -293,7 +293,7 @@ export default {
 } */
 .login {
   height: 100%;
-  background: url("../../assets/images/background.jpg") no-repeat left 20%;
+  background: url("../../assets/images/bg1.jpg") no-repeat left 20%;
   background-size: cover;
 }
 .login-title {

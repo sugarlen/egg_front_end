@@ -76,12 +76,16 @@ export default {
   font-size: 20px;
 }
 .user-info {
-  float: right;
-  margin-right: 50px;
   color: #fff;
+  position: absolute;
+  left: calc(100% - 330px);
+  z-index: 9999999999;
+  top: 9px;
 }
 .user-info > span:last-child {
   margin-left: 40px;
+  margin-top: -6px;
+  position: absolute;
 }
 .header-icon {
   position: absolute;

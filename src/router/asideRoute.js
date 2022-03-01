@@ -2,6 +2,7 @@ import Positive from '../views/positive/positive.vue'
 import Negative from '../views/negative/negative.vue'
 import WordCloud from "../views/wordCloud/wordCloud.vue"
 import Netease from "../views/netease/netease.vue"
+import CommentsType from "../views/commentsType/commentsType.vue"
 
 const asideRoute = [
     {
@@ -26,6 +27,14 @@ const asideRoute = [
         component: WordCloud,
         meta: {
             title: 'wordCloud',
+            // icon: 'fa fa-paper-plane'
+        },
+    },{
+        path: '/commentsType',
+        name: '评论类型占比',
+        component: CommentsType,
+        meta: {
+            title: 'commentsType',
             // icon: 'fa fa-paper-plane'
         },
     },{

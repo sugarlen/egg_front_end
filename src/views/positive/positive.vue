@@ -1,9 +1,9 @@
 <template>
   <div class="positive">
-    <span>{{topSelected}}积极词汇评分:</span>
+    <span>{{ topSelected }}积极词汇评分:</span>
     <div id="positiveChart" class="chart-size"></div>
     <div class="select-top">
-      <el-select v-model="topSelected" placeholder="请选择">
+      <el-select v-model="topSelected" placeholder="请选择" @change="onChange">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -16,6 +16,7 @@
   </div>
 </template>
 <script>
+import * as info from "../../api/info";
 export default {
   name: "positive",
   data() {
@@ -26,19 +27,19 @@ export default {
       },
       options: [
         {
-          value: "Top5",
+          value: 5,
           label: "Top5",
         },
         {
-          value: "Top10",
+          value: 10,
           label: "Top10",
         },
         {
-          value: "Top20",
+          value: 20,
           label: "Top20",
         },
         {
-          value: "Top50",
+          value: 50,
           label: "Top50",
         },
       ],
@@ -61,6 +62,29 @@ export default {
     this.drawChart();
   },
   methods: {
+    onChange(val){
+      console.log(val);
+      let params = {
+        username: localStorage.getItem("username"),
+        url: localStorage.getItem("url"),
+        top: val
+      };
+      info.display(params).then((res) => {
+        if (res.data.code == 200) {
+          this.positiveChartData['yData'] = [];
+          let positiveChartData = res.data.data.positive;
+          this.positiveChartData['xData'] = Object.keys(positiveChartData);
+          this.positiveChartData.xData.forEach((el) => {
+            this.positiveChartData['yData'].push(Number(positiveChartData[el].toFixed(2)));
+          });
+          localStorage.setItem("positiveChartData", JSON.stringify(this.positiveChartData));
+
+          this.drawChart()
+      this.positiveChart.resize();
+        }
+      })
+      
+    },
     drawChart() {
       let positiveOption = {
         xAxis: {
@@ -94,7 +118,7 @@ export default {
   text-align: left;
   line-height: 100%;
 }
-.positive>span:first-child{
+.positive > span:first-child {
   margin: 20px 0 0 20px;
   font-size: 24px;
   display: block;
@@ -105,7 +129,7 @@ export default {
   float: left;
   margin-top: 40px;
 }
-.select-top{
+.select-top {
   width: 10%;
   position: absolute;
   line-height: 100%;

@@ -83,6 +83,8 @@ export default {
           localStorage.setItem("negativeChartData", JSON.stringify(this.negativeChartData));
           localStorage.setItem("frequencyChartData", JSON.stringify(this.frequencyChartData));
           localStorage.setItem("pieChartData", JSON.stringify(this.pieChartData));
+
+          localStorage.setItem("url", this.url);
         } else {
           this.$message.error("拉取错误！");
         }
