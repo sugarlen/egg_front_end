@@ -66,8 +66,8 @@ export default {
   .el-main {
     background-color: #f0f2f5;
     color: #333;
-    text-align: center;
-    line-height: 160px;
+    /* text-align: center;
+    line-height: 160px; */
     padding: 70px 10px 10px 210px;
     min-height: calc(100% - 100px);
   }

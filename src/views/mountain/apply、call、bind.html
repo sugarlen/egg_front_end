@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main"></div>
+  </body>
+  <script>
+    var orderOfLargestPlusSign = function(n, mines) {
+      if (n < 2) return 0;
+      let flagArr = [];
+      let nArr = new Array(n).fill(0).map(() => new Array(n).fill(n));
+      mines.forEach((num) => {
+        nArr[num[0]][num[1]] = 0;
+      });
+      const minTop = function(x, y) {
+        let len = 0;
+        while (x > 0) {
+          if (nArr[x - 1][y] == 0) break;
+          len++;
+          x--;
+        }
+        return len;
+      };
+      const minRight = function(x, y) {
+        let len = 0;
+        while (y < n - 1) {
+          if (nArr[x][y + 1] == 0) break;
+          len++;
+          y++;
+        }
+        return len;
+      };
+      const minBottom = function(x, y) {
+        let len = 0;
+        while (x < n - 1) {
+          if (nArr[x + 1][y] == 0) break;
+          len++;
+          x++;
+        }
+        return len;
+      };
+      const minLeft = function(x, y) {
+        let len = 0;
+        while (y > 0) {
+          if (nArr[x][y - 1] == 0) break;
+          len++;
+          y--;
+        }
+        return len;
+      };
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+          if (nArr[i][j] == 0) continue;
+          let top = minTop(i, j);
+          let right = minRight(i, j);
+          let bottom = minBottom(i, j);
+          let left = minLeft(i, j);
+          flagArr.push(Math.min(top, right, bottom, left));
+        }
+      }
+      console.log(flagArr);
+      return mines.length == n * n ? 0 : Math.max(...flagArr) + 1;
+    };
+
+    console.log(
+      orderOfLargestPlusSign(2, [
+        [0, 0],
+        [0, 1],
+        [1, 0],
+        [1, 1],
+      ])
+    );
+
+    // function Fruits(){ };
+    // Fruits.prototype = {
+    //     color: 'red',
+    //     say: function(){
+    //         console.log(`My color is ${this.color} !`)
+    //     }
+
+    // }
+    // var apple = new Fruits;
+    // var banana = {
+    //     color:'yellow'
+    // }
+    // apple.say();
+    // apple.say.call(banana);
+    // apple.say.apply(banana);
+    // console.log(Fruits.prototype);
+    // console.log(console)
+
+    // function log(){
+    //     console.log(...arguments);
+    //     console.log.apply(null,arguments)
+    // }
+    // log(1,2,3)
+    // console.log(arguments)
+
+    // var arr = [1,2,3,4,5,6];
+    // console.log(Math.max(1,2,3,4,5,6));
+    // console.log(Math.max.apply(Math.max,arr));
+  </script>
+</html>

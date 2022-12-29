@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main"></div>
+  </body>
+  <script>
+    function getMinFun(n, nums) {
+      let p = 1;
+      let count = 0;
+      let countArr = [];
+      flag = false;
+      do {
+        count = p * n;
+        countArr = count.toString().split("");
+        p++;
+        for (item of countArr) {
+          if (nums.includes(Number(item))) flag = true;
+        }
+      } while (!flag);
+      return count;
+    }
+    // console.log(getMinFun(37, [0, 1]));
+
+    var permute = function(nums) {
+      let arr = [];
+      for (let i = 0; i < nums.length; i++) {
+        let numC = JSON.parse(JSON.stringify(nums));
+        numC.splice(i, 1);
+        deep([nums[i]], numC);
+        console.log([nums[i]]);
+      }
+      function deep(path, list) {
+        if (path.length == nums.length) {
+          let ppp = JSON.parse(JSON.stringify(path));
+          arr.push(ppp);
+          return;
+        }
+        for (let j = 0; j < list.length; j++) {
+          let p = JSON.parse(JSON.stringify(path));
+          p.push(list[j]);
+          let listC = JSON.parse(JSON.stringify(list));
+          listC.splice(j, 1);
+          deep(p, listC);
+          p.pop();
+        }
+      }
+      return arr;
+    };
+    console.log(permute([1, 2, 3]));
+
+    // function Fruits(){ };
+    // Fruits.prototype = {
+    //     color: 'red',
+    //     say: function(){
+    //         console.log(`My color is ${this.color} !`)
+    //     }
+
+    // }
+    // var apple = new Fruits;
+    // var banana = {
+    //     color:'yellow'
+    // }
+    // apple.say();
+    // apple.say.call(banana);
+    // apple.say.apply(banana);
+    // console.log(Fruits.prototype);
+    // console.log(console)
+
+    // function log() {
+    //   console.log(...arguments);
+    //   console.log.apply(null, arguments);
+    // }
+    // log(1, 2, 3);
+    // console.log(arguments);
+
+    // var arr = [1,2,3,4,5,6];
+    // console.log(Math.max(1,2,3,4,5,6));
+    // console.log(Math.max.apply(Math.max,arr));
+  </script>
+</html>

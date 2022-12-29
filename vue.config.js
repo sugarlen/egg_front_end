@@ -17,6 +17,8 @@ module.exports = {
               '^/server-eggs': ''
             }
           }
-        }
-    }
+        },
+        host:'0.0.0.0',
+        port: 8083,
+    },
 }
